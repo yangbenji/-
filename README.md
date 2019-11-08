@@ -1,10 +1,11 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main()
 {
 	int m[4][4]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},i,j,x[4],y[4],z[4],w[4],l,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,t,q,u,k,n,p,ren;
-	int a[4],b[4],c[4],f[4],j1,j2;
-	float d,e,o1,o2,o3,o4,g1,g2;
-	scanf("%f %f %d %d %d %d",&d,&e,&l,&u,&t,&p) ;//机器，人数,x[0]从什么开始 ,终止于什么，招多少人 ,倍数 
+	int a[4],b[4],c[4],f[4],j1,j2,h=0,g1,g2;
+	float d,e,o1,o2,o3,o4;
+	scanf("%f %f %d %d %d %d ",&d,&e,&l,&u,&t,&p) ;//机器，人数,x[0]从什么开始 ,终止于什么，4*招多少人 ,倍数 
 	d=1.0*d/p;
 	e=1.0*e/p;
 	for(i=0;i<4;i++)
@@ -190,10 +191,10 @@ int main()
 														o3=(x[2]*a[0]+y[2]*a[1]+z[2]*a[2]+w[2]*a[3])/520.00;
 														o4=(x[3]*a[0]+y[3]*a[1]+z[3]*a[2]+w[3]*a[3])/260.00;
 														j2=x[2]*b[0]+y[2]*b[1]+z[2]*b[2]+w[2]*b[3];
-														if(j1*2+j2>d*520) break;
+														if((j1*2+j2)>d*520) break;
 														if(x[3]*b[0]+y[3]*b[1]+z[3]*b[2]+w[3]*b[3]>d*260) continue;
 														if(o3>(e+q*0.25/p)-o1) break;
-														if(o4>o3) continue; 
+														if(o4>o3) break; 
 														n=(x[0]*c[0]+x[1]*c[1]+x[2]*c[2]+x[3]*c[3])*a[0]+(y[0]*c[0]+y[1]*c[1]+y[2]*c[2]+y[3]*c[3])*a[1]+(z[0]*c[0]+z[1]*c[1]+z[2]*c[2]+z[3]*c[3])*a[2]+(w[0]*c[0]+w[1]*c[1]+w[2]*c[2]+w[3]*c[3])*a[3]+q*1500/p;
 														if(x[0]+x[1]>0) n=n+10000/p;//管理费
 														if(x[3]+x[2]>0) n=n+12000/p;
@@ -207,12 +208,13 @@ int main()
 														{ 
 															printf("\n%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d ",p*x[0],p*x[1],p*x[2],p*x[3],p*y[0],p*y[1],p*y[2],p*y[3],p*z[0],p*z[1],p*z[2],p*z[3],p*w[0],p*w[1],p*w[2],p*w[3],p*n);
 															ren=q;
+															h++;
 															for(i=0;i<4;i++)
 															{ 
 																m[0][i]=x[i];
-																m[1][i]=y[i] ;
+																m[1][i]=y[i];
 																m[2][i]=z[i];
-																m[3][i]=w[i] ;
+																m[3][i]=w[i];
 															}
 															k=n;
 														}		 
@@ -239,5 +241,7 @@ int main()
 		} 
 		printf("\n") ;
 	}
-	printf("%d 招%d人",p*k,ren);
+	printf("%d 招%d人 %d ",p*k,ren,h);
+	system("pause");
+	return 0;
 }
